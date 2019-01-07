@@ -1,0 +1,17 @@
+.row {
+    margin-bottom: 50px;
+}
+
+/*.graph {
+    margin: 0 auto;
+}*/
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 50px 0 20px;
+    text-align: center;
+}
