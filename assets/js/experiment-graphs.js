@@ -21,8 +21,8 @@ function experimentCount(ndx) {
     var count_group = count_dim.group();
 
     dc.barChart("#experiment--count")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(count_dim)
         .group(count_group)
@@ -62,8 +62,8 @@ function experimentAverageYield(ndx) {
     var experimentAverageYield_group = experimentAverageYield_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-yield")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageYield_dim)
         .group(experimentAverageYield_group)
@@ -107,8 +107,8 @@ function experimentAveragePassFilter(ndx) {
     var experimentAveragePassFilter_group = experimentAveragePassFilter_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-pass-filter")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAveragePassFilter_dim)
         .group(experimentAveragePassFilter_group)
@@ -152,8 +152,8 @@ function experimentAverageClusterDensity(ndx) {
     var experimentAverageClusterDensity_group = experimentAverageClusterDensity_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-cluster-density")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageClusterDensity_dim)
         .group(experimentAverageClusterDensity_group)
@@ -197,8 +197,8 @@ function experimentAverageQ30(ndx) {
     var experimentAverageQ30_group = experimentAverageQ30_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-Q30")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageQ30_dim)
         .group(experimentAverageQ30_group)
@@ -244,8 +244,8 @@ function orderExperimentByChemistry(ndx) {
 
     
     dc.barChart("#experiment--chemistry-distribution")
-        .width(400)
-        .height(300)
+        // .width(400)
+        // .height(300)
         .dimension(dim)
         .group(high300, "High300")
         .stack(mid150, "Mid150")
@@ -296,8 +296,8 @@ function orderExperimentByUser(ndx) {
     var helen = orderByUser(dim, "Helen");
 
     dc.barChart("#experiment--user-distribution")
-        .width(400)
-        .height(300)
+        // .width(null) //400
+        // .height(null) //300
         .dimension(dim)
         .group(thomas, "Thomas")
         .stack(jane, "Jane")
