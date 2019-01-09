@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/css/dc.min.css" type="text/css" />
   <link href="assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
-
   <script type="text/javascript" src="assets/js/d3.min.js"></script>
   <script type="text/javascript" src="assets/js/crossfilter.min.js"></script>
   <script type="text/javascript" src="assets/js/dc.min.js"></script>
@@ -42,20 +42,19 @@
             <li><a href="chemistry.html">Services</a></li>
             <li><a href="experiment.html">Packages</a></li>
             <li><a href="users.html">Skills</a></li>
-            <!--<li><a href="contact.html"><span class="contact">CONTACT</span></a></li>-->
           </ul>
         </div>
       </div>
     </nav>
     <!-- NAVBAR-END -->
-    
+
     <!-- BANNER -->
     <div class="bg-banner" id="home">
       <div class="bg-banner-inner">
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
-              <h1 class="banner-title">QC Metrics</h1> 
+              <h1 class="banner-title">QC Metrics</h1>
               <h2 class="banner-subtitle">Sequencing Experiments</h2>
             </div>
           </div>
@@ -68,55 +67,79 @@
   <!--<h1>QC Metrics - Experiments</h1>-->
 
   <div class="row">
-
-    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
-      <h2>Count</h2>
+    
+    <h3>Count</h3>
+    <hr>
+    
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
       <div id="experiment--count"></div>
     </div>
+    
+  </div>
 
-    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
-      <h2>Average Yield</h2>
+  <div class="row">
+
+    <h3>Average QC Values</h3>
+    <hr>
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+      <div class="font-awesome-icon">
+        <i class="fa fa-line-chart fa-3x"></i>
+      </div>
+      <h4>Average Yield</h4>
       <div id="experiment--average-yield"></div>
     </div>
 
-  </div>
-
-  <div class="row">
-
-    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
-      <h2>Average Pass Filter</h2>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
+      <div class="font-awesome-icon">
+        <i class="fa fa-thumbs-up fa-3x"></i>
+      </div>
+      <h4>Average Pass Filter</h4>
       <div id="experiment--average-pass-filter"></div>
     </div>
 
-    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
-      <h2>Average Cluster Density</h2>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+      <div class="font-awesome-icon">
+        <i class="fa fa-line-chart fa-3x"></i>
+      </div>
+      <h4><i class="fa fa-line-chart fa-2x"></i>Average Cluster Density</h4>
       <div id="experiment--average-cluster-density"></div>
     </div>
 
-  </div>
-
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
-      <h2>Average Q30</h2>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
+       <div class="font-awesome-icon">
+        <i class="fa fa-check-square fa-3x"></i>
+      </div>
+      <h4>Average Q30 Score</h4>
       <div id="experiment--average-Q30"></div>
     </div>
+
+  </div>
+
   </div>
 
   <div class="row">
 
+    <h3>Distribution Patterns</h3>
+    <hr>
+
     <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
-      <h2>Chemistry Distribution</h2>
+      <h4>Sequencing Chemistrys</h4>
       <div id="experiment--chemistry-distribution"></div>
     </div>
 
     <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
-      <h2>User Distribution</h2>
+      <h4>Sequencing Users</h4>
       <div class="graph" id="experiment--user-distribution"></div>
     </div>
 
   </div>
-  
-    <!--SOCIAL-->
+
+  <!--SOCIAL-->
   <section class="bg-social">
     <div class="bg-social-inner container">
       <div class="row text-center">
@@ -146,7 +169,7 @@
         </ul>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <p class="copyright">2018 - 
+        <p class="copyright">2018 -
           <script>
             document.write(new Date().getFullYear());
           </script> &copy; Thomas Jones - All Rights Reserved</p>
