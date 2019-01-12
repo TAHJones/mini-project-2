@@ -4,7 +4,7 @@ queue()
     
 function makeGraphs(error, sequencingData) {
     var ndx = crossfilter(sequencingData);
-    
+
     experimentCount(ndx);
     experimentAverageYield(ndx);
     experimentAveragePassFilter(ndx);
@@ -19,22 +19,43 @@ function makeGraphs(error, sequencingData) {
 function experimentCount(ndx) {
     var count_dim = ndx.dimension(dc.pluck('Experiment'));
     var count_group = count_dim.group();
+    var colorChoice = d3.scale.ordinal()
+        .domain(["Capture","Exome","Genome"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
 
-    dc.barChart("#experiment--count")
-        // .width(400)
-        // .height(300)
+    /*dc.barChart("#experiment--count")
+        .width(400)
+        .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(count_dim)
         .group(count_group)
         .transitionDuration(500)
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
         .brushOn(false)
-        .yAxis().ticks(20);
+        .yAxis().ticks(10);*/
+        
+    dc.pieChart('#experiment--count')
+        .height(400)
+        .radius(200)
+        .transitionDuration(1500)
+        .dimension(count_dim)
+        .group(count_group)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
 }
 
 function experimentAverageYield(ndx) {
     var experimentAverageYield_dim = ndx.dimension(dc.pluck('Experiment'));
+    var colorChoice = d3.scale.ordinal()
+        .domain(["Capture","Exome","Genome"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
     
     function add_item(p, v) {
         p.count++;
@@ -62,11 +83,15 @@ function experimentAverageYield(ndx) {
     var experimentAverageYield_group = experimentAverageYield_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-yield")
-        // .width(400)
-        // .height(300)
+        .width(400)
+        .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageYield_dim)
         .group(experimentAverageYield_group)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
         .valueAccessor(function(d){
             return d.value.average.toFixed(2);
         })
@@ -80,7 +105,10 @@ function experimentAverageYield(ndx) {
 
 function experimentAveragePassFilter(ndx) {
     var experimentAveragePassFilter_dim = ndx.dimension(dc.pluck('Experiment'));
-    
+    var colorChoice = d3.scale.ordinal()
+        .domain(["Capture","Exome","Genome"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
+
     function add_item(p, v) {
         p.count++;
         p.total += v.PassFilter;
@@ -107,11 +135,15 @@ function experimentAveragePassFilter(ndx) {
     var experimentAveragePassFilter_group = experimentAveragePassFilter_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-pass-filter")
-        // .width(400)
-        // .height(300)
+        .width(400)
+        .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAveragePassFilter_dim)
         .group(experimentAveragePassFilter_group)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
         .valueAccessor(function(d){
             return d.value.average.toFixed(2);
         })
@@ -125,7 +157,10 @@ function experimentAveragePassFilter(ndx) {
 
 function experimentAverageClusterDensity(ndx) {
     var experimentAverageClusterDensity_dim = ndx.dimension(dc.pluck('Experiment'));
-    
+    var colorChoice = d3.scale.ordinal()
+        .domain(["Capture","Exome","Genome"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
+
     function add_item(p, v) {
         p.count++;
         p.total += v.ClusterDensity;
@@ -152,11 +187,15 @@ function experimentAverageClusterDensity(ndx) {
     var experimentAverageClusterDensity_group = experimentAverageClusterDensity_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-cluster-density")
-        // .width(400)
-        // .height(300)
+        .width(400)
+        .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageClusterDensity_dim)
         .group(experimentAverageClusterDensity_group)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
         .valueAccessor(function(d){
             return d.value.average.toFixed(2);
         })
@@ -170,7 +209,10 @@ function experimentAverageClusterDensity(ndx) {
 
 function experimentAverageQ30(ndx) {
     var experimentAverageQ30_dim = ndx.dimension(dc.pluck('Experiment'));
-    
+    var colorChoice = d3.scale.ordinal()
+        .domain(["Capture","Exome","Genome"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
+
     function add_item(p, v) {
         p.count++;
         p.total += v.Q30;
@@ -197,11 +239,15 @@ function experimentAverageQ30(ndx) {
     var experimentAverageQ30_group = experimentAverageQ30_dim.group().reduce(add_item, remove_item, initialise);
     
     dc.barChart("#experiment--average-Q30")
-        // .width(400)
-        // .height(300)
+        .width(400)
+        .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
         .dimension(experimentAverageQ30_dim)
         .group(experimentAverageQ30_group)
+        .colorAccessor(function (d) {
+            return d.key[4];
+        })
+        .colors(colorChoice)
         .valueAccessor(function(d){
             return d.value.average.toFixed(2);
         })
@@ -244,8 +290,8 @@ function orderExperimentByChemistry(ndx) {
 
     
     dc.barChart("#experiment--chemistry-distribution")
-        // .width(400)
-        // .height(300)
+        .width(400)
+        .height(300)
         .dimension(dim)
         .group(high300, "High300")
         .stack(mid150, "Mid150")
@@ -296,8 +342,8 @@ function orderExperimentByUser(ndx) {
     var helen = orderByUser(dim, "Helen");
 
     dc.barChart("#experiment--user-distribution")
-        // .width(null) //400
-        // .height(null) //300
+        .width(400)
+        .height(300)
         .dimension(dim)
         .group(thomas, "Thomas")
         .stack(jane, "Jane")
