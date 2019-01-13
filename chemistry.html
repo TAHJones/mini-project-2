@@ -9,89 +9,174 @@
 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/css/dc.min.css" type="text/css" />
+  <link href="assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
-
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
   <script type="text/javascript" src="assets/js/d3.min.js"></script>
   <script type="text/javascript" src="assets/js/crossfilter.min.js"></script>
   <script type="text/javascript" src="assets/js/dc.min.js"></script>
   <script type="text/javascript" src="assets/js/queue.min.js"></script>
-  <script type="text/javascript" src="assets/js/graphs2.js"></script>
-
+  <script type="text/javascript" src="assets/js/chemistry-graphs.js"></script>
+  <script type="text/javascript" src="assets/js/graphs.js"></script>
 </head>
 
 <body>
+  <div class="page">
 
-  <h1>QC Metrics - Sequencing Chemistrys</h1>
-
-  <div class="row">
-    
-    <div class="col-sm-5 col-sm-offset-1">
-      <h2>Count</h2>
-      <div id="chemistry-count"></div>
-    </div>
-    
-    <div class="col-sm-5 col-sm-offset-0">
-      <h2>Average Yield</h2>
-      <div id="chemistry-average-yield"></div>
-    </div>
-
-  </div>
+    <header>
+      <!--NAVBAR-->
+      <nav class="navbar navbar-default" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            <a class="navbar-brand" data-scroll href="#home"><img src="assets/images/dna-helix-icon.png" alt="logo"></a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="chemistry.html">Chemistries</a></li>
+              <li><a href="experiment.html">Experiments</a></li>
+              <li><a href="users.html">Users</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--NAVBAR-END-->
   
-  <!--<div class="row">
-    <div class="col-sm-7 col-sm-offset-2">
-      <h2>Sequencing Chemistry - Average Yield</h2>
-      <div id="chemistry-average-yield"></div>
-    </div>
-  </div>-->
-
-  <div class="row">
+      <!--BANNER-->
+      <div class="bg-banner" id="home">
+        <div class="bg-banner-inner">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <h1 class="banner-title">QC Metrics</h1>
+                <h2 class="banner-subtitle">Sequencing Chemistry</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--BANNER-END-->
+    </header>
+  
+    <!--COUNT-->
+    <section>
+      <div class="row">
+  
+        <h3>Chemistry Count</h3>
+        <hr>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2">
+          <div id="chemistry--count"></div>
+        </div>
+  
+      </div>
+    </section>
+    <!--COUNT-END-->
     
-    <div class="col-sm-5 col-sm-offset-1">
-      <h2>Experiment Distribution</h2>
-      <div id="chemistry--experiment-distribution"></div>
-    </div>
-      
-    <div class="col-sm-5 col-sm-offset-0">
-      <h2>User Distribution</h2>
-      <div class="graph" id="chemistry--user-distribution"></div>
-    </div>
-    
-  </div>
+    <!--AVERAGE-->
+    <section>
+      <div class="row">
+  
+        <h3>Average QC Values</h3>
+        <hr>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+          <h4><i class="fa fa-line-chart fa-1x"></i>Average Yield</h4>
+          <div id="chemistry--average-yield"></div>
+        </div>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
+          <h4><i class="fa fa-thumbs-up fa-1x"></i>Average Pass Filter</h4>
+          <div id="chemistry--average-pass-filter"></div>
+        </div>
+  
+      </div>
+  
+      <div class="row">
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+          <h4><i class="fa fa-th fa-1x"></i>Average Cluster Density</h4>
+          <div id="chemistry--average-cluster-density"></div>
+        </div>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
+          <h4><i class="fa fa-check-square fa-1x"></i>Average Q30 Score</h4>
+          <div id="chemistry--average-Q30"></div>
+        </div>
+  
+      </div>
+    </section>
+    <!--AVERAGE-END-->
 
-  <!--<div class="row">
-    <div class="col-sm-5 col-sm-offset-0">
-      <h2>User Distribution</h2>
-      <div class="graph" id="chemistry--user-distribution"></div>
-    </div>
-  </div>-->
+    <!--DISTRIBUTION-->
+    <section>
+      <div class="row">
+  
+        <h3>Distribution Patterns</h3>
+        <hr>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-1">
+          <h4 class="distribution"><i class="fa fa-flask fa-1x"></i>Sequencing Chemistrys</h4>
+          <div id="chemistry--experiment-distribution"></div>
+        </div>
+  
+        <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-sm-offset-0">
+          <h4 class="distribution"><i class="fa fa-users fa-1x"></i>Sequencing Users</h4>
+          <div id="chemistry--user-distribution"></div>
+        </div>
+  
+      </div>
+    </section>
+    <!--DISTRIBUTION-END-->
 
-  <!--<div class="row">
-    <div class="col-sm-7 col-sm-offset-2">
-      <h2>Cluster Density - K/mm2</h2>
-      <div class="graph" id="cluster-density"></div>
-    </div>
-  </div>-->
+    <!--SOCIAL-->
+    <section class="bg-social">
+      <div class="bg-social-inner container">
+        <div class="row text-center">
+          <div class="col-sm-12">
+            <a class="social-link" href="https://www.facebook.com/profile.php?id=100012644315217" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a class="social-link" href="https://www.linkedin.com/in/TAHJones" target="_blank"><i class="fa fa-linkedin"></i></a>
+            <a class="social-link" href="https://plus.google.com/u/0/118325296130338065437?tab=wX" target="_blank"><i class="fa fa-google-plus"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--SOCIAL-END-->
+  
+    <!--FOOTER-->
+    <footer class="bg-footer">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 margin-bottom-xs">
+          <ul class="list-inline">
+            <li class="border-right">
+              <a class="hidden-xs" href="chemistry.html">Top</a>
+              <a class="visible-xs" href="chemistry.html">Top of Page</a>
+            </li>
+            <li class="border-right"><a href="index.html">Home</a></li>
+            <li class="border-right hidden-xs"><a href="chemistry.html">Chemistries</a></li>
+            <li class="border-right"><a href="experiment.html">Experiments</a></li>
+            <li class="hidden-xs"><a href="users.html">Users</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <p class="copyright">2018 -
+            <script>
+              document.write(new Date().getFullYear());
+            </script> &copy; Thomas Jones - All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+    <!--FOOTER-END-->
 
-  <!--<div class="row">
-    <div class="col-sm-7 col-sm-offset-2">
-      <h2>Clusters Passing Filter</h2>
-      <div class="graph" id="pass-filter"></div>
-    </div>
-  </div>-->
-
-  <!--<div class="row">
-    <div class="col-sm-7 col-sm-offset-2">
-      <h2>Q30 Score</h2>
-      <div class="graph" id="Q30"></div>
-    </div>
-  </div>-->
-
-  <!--<div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-
-    </div>
-  </div>-->
-
+  </div><!--page-->
 </body>
 
 </html>
+

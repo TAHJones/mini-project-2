@@ -1,3 +1,5 @@
+/* GENERAL */
+
 body {
     background-color: #fff;
     font-family: 'Roboto', sans-serif;
@@ -65,6 +67,8 @@ h4 .fa {
     transform: translate(-50%, -50%);
 }
 
+/* GENERAL-END */
+
 /* NAVBAR */
 
 .navbar {
@@ -75,6 +79,7 @@ h4 .fa {
     margin-bottom: 0;
     padding: 20px 0;
     position: relative;
+    text-shadow: none;
 }
 
 .navbar-brand>img {
@@ -89,7 +94,7 @@ h4 .fa {
 
 .navbar-default .navbar-nav>li>a {
     color: #ddd;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 /* NAVBAR-END */
