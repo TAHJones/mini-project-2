@@ -5,41 +5,25 @@ queue()
 function makeGraphs(error, sequencingData) {
     var ndx = crossfilter(sequencingData);
     
-    userCount(ndx);
-    userAverageYield(ndx);
-    userAveragePassFilter(ndx);
-    userAverageClusterDensity(ndx);
-    userAverageQ30(ndx);
-    orderUserByExperiment(ndx);
-    orderUserByChemistry(ndx);
+    chemistryCount(ndx);
+    chemistryAverageYield(ndx);
+    chemistryAveragePassFilter(ndx);
+    chemistryAverageClusterDensity(ndx);
+    chemistryAverageQ30(ndx);
+    orderChemistryByExperiment(ndx);
+    orderChemistryByUser(ndx);
 
     dc.renderAll();
 }
 
-function userCount(ndx) {
-    var count_dim = ndx.dimension(dc.pluck('User'));
+function chemistryCount(ndx) {
+    var count_dim = ndx.dimension(dc.pluck('Chemistry'));
     var count_group = count_dim.group();
     var colorChoice = d3.scale.ordinal()
-        .domain(["Thomas","Jane","Wayne","Sarah","Andrew","Helen"])
-        .range(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+        .domain(["High300","Mid150","Mid300"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
 
-/*    dc.barChart("#user--count")
-        .width(400)
-        .height(300)
-        .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(count_dim)
-        .group(count_group)
-        .colorAccessor(function (d) {
-            return d.key[4];
-        })
-        .colors(colorChoice)
-        .transitionDuration(500)
-        .x(d3.scale.ordinal())
-        .xUnits(dc.units.ordinal)
-        .brushOn(false)
-        .yAxis().ticks(20);*/
-
-    dc.pieChart('#user--count')
+    dc.pieChart('#chemistry--count')
         .height(400)
         .radius(200)
         .transitionDuration(1500)
@@ -51,11 +35,11 @@ function userCount(ndx) {
         .colors(colorChoice);
 }
 
-function userAverageYield(ndx) {
-    var user_average_yield_dim = ndx.dimension(dc.pluck('User'));
+function chemistryAverageYield(ndx) {
+    var chemistryAverageYield_dim = ndx.dimension(dc.pluck('Chemistry'));
     var colorChoice = d3.scale.ordinal()
-        .domain(["Thomas","Jane","Wayne","Sarah","Andrew","Helen"])
-        .range(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+        .domain(["High300","Mid150","Mid300"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
     
     function add_item(p, v) {
         p.count++;
@@ -70,7 +54,7 @@ function userAverageYield(ndx) {
             p.total = 0;
             p.average = 0;
         } else {
-          p.total -= v.Yield;
+          p.total -= v.salary;
           p.average = p.total / p.count;
         }
         return p;
@@ -80,14 +64,14 @@ function userAverageYield(ndx) {
         return {count: 0, total: 0, average: 0};
     }
     
-    var user_average_yield_group = user_average_yield_dim.group().reduce(add_item, remove_item, initialise);
+    var chemistryAverageYield_group = chemistryAverageYield_dim.group().reduce(add_item, remove_item, initialise);
     
-    dc.barChart("#user--average-yield")
+    dc.barChart("#chemistry--average-yield")
         .width(400)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(user_average_yield_dim)
-        .group(user_average_yield_group)
+        .dimension(chemistryAverageYield_dim)
+        .group(chemistryAverageYield_group)
         .colorAccessor(function (d) {
             return d.key[4];
         })
@@ -101,13 +85,13 @@ function userAverageYield(ndx) {
         .elasticY(true)
         .yAxisLabel("Yield - Gb")
         .yAxis().ticks(6);
-} 
+}
 
-function userAveragePassFilter(ndx) {
-    var userAveragePassFilter_dim = ndx.dimension(dc.pluck('User'));
+function chemistryAveragePassFilter(ndx) {
+    var chemistryAveragePassFilter_dim = ndx.dimension(dc.pluck('Chemistry'));
     var colorChoice = d3.scale.ordinal()
-        .domain(["Thomas","Jane","Wayne","Sarah","Andrew","Helen"])
-        .range(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+        .domain(["High300","Mid150","Mid300"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
 
     function add_item(p, v) {
         p.count++;
@@ -132,14 +116,14 @@ function userAveragePassFilter(ndx) {
         return {count: 0, total: 0, average: 0};
     }
     
-    var userAveragePassFilter_group = userAveragePassFilter_dim.group().reduce(add_item, remove_item, initialise);
+    var chemistryAveragePassFilter_group = chemistryAveragePassFilter_dim.group().reduce(add_item, remove_item, initialise);
     
-    dc.barChart("#user--average-pass-filter")
+    dc.barChart("#chemistry--average-pass-filter")
         .width(400)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(userAveragePassFilter_dim)
-        .group(userAveragePassFilter_group)
+        .dimension(chemistryAveragePassFilter_dim)
+        .group(chemistryAveragePassFilter_group)
         .colorAccessor(function (d) {
             return d.key[4];
         })
@@ -155,11 +139,11 @@ function userAveragePassFilter(ndx) {
         .yAxis().ticks(6);
 } 
 
-function userAverageClusterDensity(ndx) {
-    var userAverageClusterDensity_dim = ndx.dimension(dc.pluck('User'));
+function chemistryAverageClusterDensity(ndx) {
+    var chemistryAverageClusterDensity_dim = ndx.dimension(dc.pluck('Chemistry'));
     var colorChoice = d3.scale.ordinal()
-        .domain(["Thomas","Jane","Wayne","Sarah","Andrew","Helen"])
-        .range(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
+        .domain(["High300","Mid150","Mid300"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
 
     function add_item(p, v) {
         p.count++;
@@ -184,14 +168,14 @@ function userAverageClusterDensity(ndx) {
         return {count: 0, total: 0, average: 0};
     }
     
-    var userAverageClusterDensity_group = userAverageClusterDensity_dim.group().reduce(add_item, remove_item, initialise);
+    var chemistryAverageClusterDensity_group = chemistryAverageClusterDensity_dim.group().reduce(add_item, remove_item, initialise);
     
-    dc.barChart("#user--average-cluster-density")
+    dc.barChart("#chemistry--average-cluster-density")
         .width(400)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(userAverageClusterDensity_dim)
-        .group(userAverageClusterDensity_group)
+        .dimension(chemistryAverageClusterDensity_dim)
+        .group(chemistryAverageClusterDensity_group)
         .colorAccessor(function (d) {
             return d.key[4];
         })
@@ -207,12 +191,12 @@ function userAverageClusterDensity(ndx) {
         .yAxis().ticks(6);
 }
 
-function userAverageQ30(ndx) {
-    var userAverageQ30_dim = ndx.dimension(dc.pluck('User'));
+function chemistryAverageQ30(ndx) {
+    var chemistryAverageQ30_dim = ndx.dimension(dc.pluck('Chemistry'));
     var colorChoice = d3.scale.ordinal()
-        .domain(["Thomas","Jane","Wayne","Sarah","Andrew","Helen"])
-        .range(["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"]);
-
+        .domain(["High300","Mid150","Mid300"])
+        .range(["#1f77b4","#ff7f0e","#2ca02c"]);
+        
     function add_item(p, v) {
         p.count++;
         p.total += v.Q30;
@@ -236,14 +220,14 @@ function userAverageQ30(ndx) {
         return {count: 0, total: 0, average: 0};
     }
     
-    var userAverageQ30_group = userAverageQ30_dim.group().reduce(add_item, remove_item, initialise);
+    var chemistryAverageQ30_group = chemistryAverageQ30_dim.group().reduce(add_item, remove_item, initialise);
     
-    dc.barChart("#user--average-Q30")
+    dc.barChart("#chemistry--average-Q30")
         .width(400)
         .height(300)
         .margins({top: 10, right: 50, bottom: 30, left: 50})
-        .dimension(userAverageQ30_dim)
-        .group(userAverageQ30_group)
+        .dimension(chemistryAverageQ30_dim)
+        .group(chemistryAverageQ30_group)
         .colorAccessor(function (d) {
             return d.key[4];
         })
@@ -259,7 +243,7 @@ function userAverageQ30(ndx) {
         .yAxis().ticks(6);
 }
 
-function orderUserByExperiment(ndx) {
+function orderChemistryByExperiment(ndx) {
     
     function orderByExperiment(dimension, experiment) {
         return dimension.group().reduce(
@@ -283,12 +267,12 @@ function orderUserByExperiment(ndx) {
         );
     }
     
-    var dim = ndx.dimension(dc.pluck("User"));
+    var dim = ndx.dimension(dc.pluck("Chemistry"));
     var capture = orderByExperiment(dim, "Capture");
     var exome = orderByExperiment(dim, "Exome");
     var genome = orderByExperiment(dim, "Genome");
     
-    dc.barChart("#user--experiment-distribution")
+    dc.barChart("#chemistry--experiment-distribution")
         .width(400)
         .height(300)
         .dimension(dim)
@@ -308,20 +292,20 @@ function orderUserByExperiment(ndx) {
         .margins({top: 10, right: 100, bottom: 30, left: 30});
 }
 
-function orderUserByChemistry(ndx) {
+function orderChemistryByUser(ndx) {
     
-    function orderByChemistry(dimension, chemistry) {
+    function orderByUser(dimension, user) {
         return dimension.group().reduce(
             function (p, v) {
                 p.total++;
-                if(v.Chemistry == chemistry) {
+                if(v.User == user) {
                     p.match++;
                 }
                 return p;
             },
             function (p, v) {
                 p.total--;
-                if(v.Chemistry == chemistry) {
+                if(v.User == user) {
                     p.match--;
                 }
                 return p;
@@ -332,18 +316,24 @@ function orderUserByChemistry(ndx) {
         );
     }
     
-    var dim = ndx.dimension(dc.pluck("User"));
-    var high300 = orderByChemistry(dim, "High300");
-    var mid150 = orderByChemistry(dim, "Mid150");
-    var mid300 = orderByChemistry(dim, "Mid300");
+    var dim = ndx.dimension(dc.pluck("Chemistry"));
+    var thomas = orderByUser(dim, "Thomas");
+    var jane = orderByUser(dim, "Jane");
+    var wayne = orderByUser(dim, "Wayne");
+    var sarah = orderByUser(dim, "Sarah");
+    var andrew = orderByUser(dim, "Andrew");
+    var helen = orderByUser(dim, "Helen");
     
-    dc.barChart("#user--chemistry-distribution")
+    dc.barChart("#chemistry--user-distribution")
         .width(400)
         .height(300)
         .dimension(dim)
-        .group(high300, "High300")
-        .stack(mid150, "Mid150")
-        .stack(mid300, "Mid300")
+        .group(thomas, "Thomas")
+        .stack(jane, "Jane")
+        .stack(wayne, "Wayne")
+        .stack(sarah, "Sarah")
+        .stack(andrew, "Andrew")
+        .stack(helen, "Helen")
         .valueAccessor(function(d) {
             if(d.value.total > 0) {
                 return (d.value.match / d.value.total) * 100;

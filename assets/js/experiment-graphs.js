@@ -48,7 +48,7 @@ function experimentCount(ndx) {
         .colorAccessor(function (d) {
             return d.key[4];
         })
-        .colors(colorChoice)
+        .colors(colorChoice);
 }
 
 function experimentAverageYield(ndx) {
