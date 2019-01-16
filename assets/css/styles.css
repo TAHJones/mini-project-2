@@ -171,6 +171,164 @@ h4 .fa {
 
 /* BANNER-END */
 
+/* HOMEPAGE */
+
+.run-metrics {
+    /*margin: 0 30px;*/
+}
+
+h4.homepage-subtitle {
+    color: rgb(55, 118, 179);
+    font-size: 20px;
+    margin: 30px 0 30px;
+    text-align: center;
+    text-transform: uppercase;    
+}
+
+/*.homepage-subtitle ~ hr {
+    margin: 20px auto 30px;
+}*/
+
+.overlay-container-1,
+.overlay-container-2,
+.overlay-container-3,
+.overlay-container-4, 
+.overlay-container-5, 
+.overlay-container-6, 
+.overlay-container-7, 
+.overlay-container-8 {
+    position: relative;
+    width: 100%;
+}
+
+.homepage-img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border: 12px solid slategrey;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0%;
+    right: 0%;
+    height: 100%;
+    max-width: 80%;
+    opacity: 0;
+    transition: .5s ease-in-out;
+    background-color: rgba(0, 0, 0, .6);
+    margin: 0 auto;
+    border: 20px solid rgba(0, 0, 0, .6);
+    border-radius: 10px;    
+}
+
+.overlay-container-1:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-2:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-3:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-4:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-5:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-6:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-7:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-container-8:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: #3399f3;
+    font-size: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .homepage-img {
+        max-width: 100%;
+    }
+
+    .overlay {
+        max-width: 100%;
+    }
+
+    .overlay-text {
+        font-size: 28px;
+    }
+}
+
+/* HOMEPAGE-END */
+
+/*OTHER-METRICS*/
+
+.other-metrics .overlay {
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*left: 0%;*/
+    /*right: 0%;*/
+    /*height: 100%;*/
+    /*max-width: 80%;*/
+    /*opacity: 0;*/
+    /*transition: .5s ease-in-out;*/
+    /*background-color: rgba(0, 0, 0, .6);*/
+    /*margin: 0 auto;*/
+    border-width: 2px;
+    /*border-radius: 10px;*/
+}
+
+.other-metrics .homepage-img {
+    /*display: block;*/
+    /*max-width: 100%;*/
+    /*height: auto;*/
+    /*margin: 0 auto;*/
+    /*border: 20px solid rgb(34, 49, 63);*/
+    /*border-radius: 10px;*/
+    border-width: 10px;
+}
+
+.other-metrics .overlay-text {
+    /*color: #FF9404;*/
+    font-size: 16px;
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*-webkit-transform: translate(-50%, -50%);*/
+    /*-ms-transform: translate(-50%, -50%);*/
+    /*transform: translate(-50%, -50%);*/
+    /*text-align: center;*/
+}
+
+/*OTHER-METRICS*/
+
 /* SOCIAL */
 
 .bg-social {
@@ -184,6 +342,7 @@ h4 .fa {
 
 .bg-social-inner {
     background-color: rgba(34, 49, 63, 0.7);
+    margin-top: 100px;
     padding: 60px 0 10px;
     width: 100%;
 }
@@ -324,7 +483,7 @@ h4 .fa {
     }
 
     .bg-footer ul li a {
-        font-size: 15px;
+        font-size: 12px;
         margin: 0 2px;
     }
 }
