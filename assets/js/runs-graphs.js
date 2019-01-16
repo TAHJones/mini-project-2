@@ -1,5 +1,5 @@
 queue()
-    .defer(d3.json, "assets/data/sequencing_metrics2.json")
+    .defer(d3.json, "assets/data/sequencing_metrics.json")
     .await(makeGraphs);
     
 function makeGraphs(error, sequencingData) {
