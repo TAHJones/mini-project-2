@@ -5,19 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Next Generation DNA Sequencing - QC Metrics</title>
+  <title>QC Metrics Analyser</title>
 
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css" />
   <link rel="stylesheet" href="assets/css/dc.min.css" type="text/css" />
   <link href="assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Cabin|Roboto" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" type="text/css" />
-  <link rel="shortcut icon" href="assets/images/favicon.ico">
-  <!--<script type="text/javascript" src="assets/js/d3.min.js"></script>-->
-  <!--<script type="text/javascript" src="assets/js/crossfilter.min.js"></script>-->
-  <!--<script type="text/javascript" src="assets/js/dc.min.js"></script>-->
-  <!--<script type="text/javascript" src="assets/js/queue.min.js"></script>-->
-  <!--<script type="text/javascript" src="assets/js/graphs.js"></script>-->
+  <link rel="shortcut icon" href="assets/images/favicon.png">
 </head>
 
 <body>
@@ -34,7 +29,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-            <a class="navbar-brand" data-scroll href="#home"><img src="assets/images/dna-helix-icon.png" alt="logo"></a>
+            <a class="navbar-brand" data-scroll href="#home"><img src="assets/images/qc-metrics-analyser-logo.png" alt="logo"></a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -48,15 +43,15 @@
         </div>
       </nav>
       <!--NAVBAR-END-->
-  
+
       <!--BANNER-->
       <div class="bg-banner" id="home">
         <div class="bg-banner-inner">
           <div class="container">
             <div class="row">
               <div class="col-sm-12">
-                <h1 class="banner-title">QC Metrics</h1>
-                <h2 class="banner-subtitle">Sequencing Metrics Analyser</h2>
+                <h1 class="banner-title">QC Metrics Analyser</h1>
+                <h2 class="banner-subtitle">Next Generation Sequencing</h2>
               </div>
             </div>
           </div>
@@ -65,67 +60,179 @@
       <!--BANNER-END-->
     </header>
 
-    <!--GRAPHS-->
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h3>Yield - Gb</h3>
-        <div class="graph" id=""></div>
-          <a href="https://tahjones.github.io/alessiajones" target="_blank">
+    <!--SEQUENCING-RUNS-->
+    <section>
+      <h3>Sequencing Run Metrics</h3>
+      <hr>
+
+      <div class="row run-metrics">
+
+        <div class="col-sm-3 col-sm-offset-3">
+          <h4 class="homepage-subtitle">Yield</h4>
+          <!--<hr>-->
+          <a href="runs.html#yield">
             <div class="overlay-container-1">
-              <img class="portfolio-img" src="assets/images/yield.png" alt="portfolio-1">
+              <img class="homepage-img" src="assets/images/yield.jpg" alt="homepage-1">
               <div class="overlay">
-                <div class="overlay-text">Visit Site</div>
+                <div class="overlay-text">Yield</div>
               </div>
             </div>
           </a>
-      </div>
-    </div>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h3>Cluster Density - K/mm2</h3>
-        <div class="graph" id=""></div>
-          <a href="https://tahjones.github.io/elements-of-healing" target="_blank">
+        <div class="col-sm-3 col-sm-offset-0">
+          <h4 class="homepage-subtitle">Cluster Density</h4>
+          <!--<hr>-->
+          <a href="runs.html#cluster-density">
             <div class="overlay-container-2">
-              <img class="portfolio-img" src="assets/images/cluster-density.jpg" alt="portfolio-2">
+              <img class="homepage-img" src="assets/images/clusters.jpg" alt="homepage-2">
               <div class="overlay">
-                <div class="overlay-text">Visit Site</div>
+                <div class="overlay-text">Cluster Density</div>
               </div>
             </div>
           </a>
-      </div>
-    </div>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h3>Clusters Passing Filter - %</h3>
-        <div class="graph" id=""></div>
-          <a href="https://tahjones.github.io/milestone-project-1">
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-3 col-sm-offset-3">
+          <h4 class="homepage-subtitle">Pass Filter</h4>
+          <!--<hr>-->
+          <a href="runs.html#pass-filter">
             <div class="overlay-container-3">
-              <img class="portfolio-img" src="assets/images/pass-filter.jpg" alt="portfolio-3">
+              <img class="homepage-img" src="assets/images/pass-filter.jpg" alt="homepage-3">
               <div class="overlay">
-                <div class="overlay-text">Visit Site</div>
+                <div class="overlay-text">Clusters Passing Filter</div>
               </div>
             </div>
           </a>
-      </div>
-    </div>
+        </div>
 
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h3>Q30 Score - %</h3>
-        <div class="graph" id=""></div>
-          <a href="https://tahjones.github.io/milestone-project-1">
+        <div class="col-sm-3 col-sm-offset-0">
+          <h4 class="homepage-subtitle">Q30 Score</h4>
+          <!--<hr>-->
+          <a href="runs.html#Q30">
             <div class="overlay-container-4">
-              <img class="portfolio-img" src="assets/images/q30.png" alt="portfolio-3">
+              <img class="homepage-img" src="assets/images/q30-score2.jpg" alt="homepage-3">
               <div class="overlay">
-                <div class="overlay-text">Visit Site</div>
+                <div class="overlay-text">Q30 Score</div>
               </div>
             </div>
           </a>
+        </div>
+
       </div>
-    </div>
-    <!--GRAPHS-END-->
+    </section>
+    <!--SEQUENCING-RUNS-END-->
+
+    <!--OTHER-SEQUENCING-METRICS-->
+    <section>
+      <h3>Other Sequencing Metrics</h3>
+      <hr>
+      <div class="row other-metrics">
+
+        <div class="col-sm-2 col-sm-offset-2">
+          <h4 class="homepage-subtitle">Chemistry</h4>
+          <!--<hr>-->
+          <a href="chemistry.html">
+            <div class="overlay-container-5">
+              <img class="homepage-img" src="assets/images/chemistry.jpg" alt="homepage-5">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Chemistry</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-2 col-sm-offset-1">
+          <h4 class="homepage-subtitle">Experiments</h4>
+          <!--<hr>-->
+          <a href="experiment.html">
+            <div class="overlay-container-6">
+              <img class="homepage-img" src="assets/images/experiments.jpg" alt="homepage-6">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Experiments</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-2 col-sm-offset-1">
+          <h4 class="homepage-subtitle">Users</h4>
+          <!--<hr>-->
+          <a href="users.html">
+            <div class="overlay-container-7">
+              <img class="homepage-img" src="assets/images/users.png" alt="homepage-7">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Users</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+    <!--OTHER-SEQUENCING-METRICS-END-->
+    
+<!--    <section>
+      <h3>Chemistry, Experiments & Users</h3>
+      <hr>
+
+      <div class="row">
+
+        <div class="col-sm-4 col-sm-offset-2">
+          <a href="chemistry.html">
+            <div class="overlay-container-5">
+              <img class="homepage-img" src="assets/images/chemical-flask-set-2.jpg" alt="homepage-5">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Chemistry</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-0">
+          <a href="experiment.html">
+            <div class="overlay-container-6">
+              <img class="homepage-img" src="assets/images/experiments2.jpg" alt="homepage-6">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Experiments</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-4 col-sm-offset-2">
+          <a href="users.html">
+            <div class="overlay-container-7">
+              <img class="homepage-img" src="assets/images/iconfinder_User.png" alt="homepage-7">
+              <div class="overlay">
+                <div class="overlay-text">Sequencing Users</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-0">
+          <a href="runs.html#Q30">
+            <div class="overlay-container-8">
+              <img class="homepage-img" src="assets/images/q30-4.png" alt="homepage-8">
+              <div class="overlay">
+                <div class="overlay-text">Q30 Score</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>-->
+    <!--MAIN-END-->
 
     <!--SOCIAL-->
     <section class="bg-social">
@@ -140,7 +247,7 @@
       </div>
     </section>
     <!--SOCIAL-END-->
-  
+
     <!--FOOTER-->
     <footer class="bg-footer">
       <div class="row">
@@ -167,7 +274,8 @@
     </footer>
     <!--FOOTER-END-->
 
-  </div><!--page-->
+  </div>
+  <!--page-->
 </body>
 
 </html>
