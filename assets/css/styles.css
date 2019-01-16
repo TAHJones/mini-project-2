@@ -105,9 +105,9 @@ h4 .fa {
     color: #FFF;
     background-color: rgb(34, 49, 63);
     /* works for github pages*/
-    /*background-image: url(/mini-project-2/assets/images/banner.jpg);*/
+    background-image: url(/mini-project-2/assets/images/banner.jpg);
     /*works for cloud9*/
-    background-image: url(/assets/images/banner.jpg);
+    /*background-image: url(/assets/images/banner.jpg);*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
